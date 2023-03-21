@@ -1,0 +1,20 @@
+$darkBlue: #472183;
+$Blue: #4b56d2;
+$lightBlue: #82c3ec;
+$grey: #f1f6f5;
+
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height: 100vh;
+  background: linear-gradient($darkBlue, $Blue);
+  color: white;
+  padding: 0 10px;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}

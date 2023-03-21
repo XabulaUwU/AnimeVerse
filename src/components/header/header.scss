@@ -1,0 +1,20 @@
+$darkBlue: #472183;
+$Blue: #4b56d2;
+$lightBlue: #82c3ec;
+$grey: #f1f6f5;
+
+header {
+  display: flex;
+  justify-content: space-between;
+  height: 20vh;
+  align-items: center;
+  #search {
+    display: flex;
+    background-color: #5c2caa;
+    padding: 5px;
+    width: 200px;
+    justify-content: center;
+    border-radius: 10px;
+    border: none;
+  }
+}
