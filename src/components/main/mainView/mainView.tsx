@@ -1,5 +1,9 @@
+import { useEffect } from "react";
 import "./mainView.scss";
 export function MainView() {
+  useEffect(() => {
+    console.log("teste");
+  }, []);
   return (
     <main>
       <h1>Anime Schedule</h1>
