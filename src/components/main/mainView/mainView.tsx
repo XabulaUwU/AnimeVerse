@@ -1,8 +1,16 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { data as recent } from "../../../functions/recentEpisodes/recentEpisodes";
 import "./mainView.scss";
 export function MainView() {
+  const [recentEpisodes, setRecentEpisodes] = useState([]);
+  const recentEpisodesData = async () => {
+    const newData = await recent();
+    console.log(newData);
+    setRecentEpisodes(newData);
+  };
   useEffect(() => {
-    console.log("teste");
+    recentEpisodesData();
+    console.log(recentEpisodes);
   }, []);
   return (
     <main>
