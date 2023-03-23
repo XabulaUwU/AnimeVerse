@@ -1,6 +1,13 @@
 .recentEpisode {
+  margin: 5px;
+  height: 200px;
+  width: 150px;
   img {
     height: 200px;
     width: 150px;
+    border-radius: 5px;
+  }
+  :hover {
+    cursor: pointer;
   }
 }

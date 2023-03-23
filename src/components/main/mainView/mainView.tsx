@@ -28,17 +28,51 @@ export function MainView() {
   }, []);
   return (
     <main>
-      <h1>Anime Schedule</h1>
-      <div id="schedule">{1}</div>
       <h1>Recent Episodes</h1>
-      <div id="recent">
-        {recentEpisodes?.results.map((i) => (
-          <EpisodeView
-            title={i.title}
-            image={i.image}
-            episodeNumber={i.episodeNumber}
-          />
-        ))}
+      <div className="recent" id="first">
+        {recentEpisodes?.results.map((i, index) => {
+          if (index < 5) {
+            return (
+              <EpisodeView
+                title={i.title}
+                image={i.image}
+                episodeNumber={i.episodeNumber}
+                key={index}
+              />
+            );
+          }
+          return "";
+        })}
+      </div>
+      <div className="recent" id="second">
+        {recentEpisodes?.results.map((i, index) => {
+          if (index > 4 && index < 10) {
+            return (
+              <EpisodeView
+                title={i.title}
+                image={i.image}
+                episodeNumber={i.episodeNumber}
+                key={index}
+              />
+            );
+          }
+          return "";
+        })}
+      </div>
+      <div className="recent" id="third">
+        {recentEpisodes?.results.map((i, index) => {
+          if (index > 9 && index < 15) {
+            return (
+              <EpisodeView
+                title={i.title}
+                image={i.image}
+                episodeNumber={i.episodeNumber}
+                key={index}
+              />
+            );
+          }
+          return "";
+        })}
       </div>
       <h1>Popular Anime</h1>
       <div id="popular">Popular</div>
