@@ -1,11 +1,15 @@
 import "./episodeView.scss";
-export function EpisodeView({ title, image, episodeNumber }) {
+export function EpisodeView({ title, image, episodeNumber = 0 }) {
   return (
     <div className="recentEpisode">
       <img src={image} alt={`${title} episode ${episodeNumber}`} />
-      <p>
-        {title}: Episode {episodeNumber}
-      </p>
+      {episodeNumber ? (
+        <p>
+          {title}: Episode {episodeNumber}
+        </p>
+      ) : (
+        <p>{title}</p>
+      )}
     </div>
   );
 }
