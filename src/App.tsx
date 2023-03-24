@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import "./app.scss";
-import Home from "./components/pages/home/home";
-import Watch from "./components/pages/watch/watch";
+import Home from "./layouts/home/home";
+import Watch from "./layouts/watch/watch";
 function App() {
   return (
     <Routes>

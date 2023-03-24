@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { data as recent } from "../../../functions/recentEpisodes/recentEpisodes";
-import { EpisodeView } from "../../episodeView/episodeView";
-import { data as top } from "../../../functions/topAiring/topAiring";
+import { data as recent } from "../../services/recentEpisodes/recentEpisodes";
+import { EpisodeView } from "../../components/AnimeComponent/animeComponent";
+import { data as top } from "../../services/topAiring/topAiring";
 import "./mainView.scss";
 type recentEpisodesList = {
   currentPage: 0;
@@ -102,7 +102,14 @@ export function MainView() {
       <div className="popular">
         {topAiring?.results.map((i, index) => {
           if (index < 5) {
-            return <EpisodeView title={i.title} image={i.image} key={index} />;
+            return (
+              <EpisodeView
+                title={i.title}
+                image={i.image}
+                id={i.id}
+                key={index}
+              />
+            );
           }
           return "";
         })}
@@ -110,7 +117,14 @@ export function MainView() {
       <div className="popular">
         {topAiring?.results.map((i, index) => {
           if (index > 4) {
-            return <EpisodeView title={i.title} image={i.image} key={index} />;
+            return (
+              <EpisodeView
+                title={i.title}
+                image={i.image}
+                id={i.id}
+                key={index}
+              />
+            );
           }
           return "";
         })}
