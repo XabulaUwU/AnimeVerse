@@ -1,6 +1,6 @@
-import { Footer } from "../../components/footer/footer";
-import { Header } from "../../components/header/header";
-import { MainView } from "../../views/MainView/mainView";
+import { Footer } from "../../components/footer";
+import { Header } from "../../components/header";
+import { MainView } from "../../views/MainView";
 
 function Home() {
   return (

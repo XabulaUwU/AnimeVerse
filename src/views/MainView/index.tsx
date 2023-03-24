@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { data as recent } from "../../services/recentEpisodes/recentEpisodes";
-import { EpisodeView } from "../../components/AnimeComponent/animeComponent";
+import { EpisodeView } from "../../components/AnimeComponent";
 import { data as top } from "../../services/topAiring/topAiring";
 import "./mainView.scss";
 type recentEpisodesList = {
