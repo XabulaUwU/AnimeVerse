@@ -41,7 +41,6 @@ export function MainView() {
   };
   const topAiringData = async () => {
     const topAiringList = await top();
-    console.log(topAiringList);
     setTopAiring(topAiringList);
   };
 

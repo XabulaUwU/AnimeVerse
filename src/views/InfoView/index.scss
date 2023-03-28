@@ -1,0 +1,33 @@
+#information {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 200px;
+  h1 {
+    font-weight: 200;
+    font-family: "Times New Roman", Times, serif;
+  }
+  h2 {
+    font-weight: 100;
+    font-family: "Times New Roman", Times, serif;
+  }
+  margin-bottom: 5px;
+}
+#episodes {
+  margin: 0 200px;
+  #episode {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3px;
+    a {
+      text-decoration: none;
+      background-color: blue;
+      color: white;
+      padding: 2px;
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+    a:hover {
+      opacity: 0.3;
+    }
+  }
+}

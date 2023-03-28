@@ -6,7 +6,11 @@ export function EpisodeView({ title, image, episodeNumber = 0, id = "" }) {
     return abTitle;
   };
   return (
-    <Link to={episodeNumber ? "/watch" : `/anime/${id}`}>
+    <Link
+      to={
+        episodeNumber ? `/watch/${id}-episode-${episodeNumber}` : `/anime/${id}`
+      }
+    >
       <div className="recentEpisode">
         <img src={image} alt={`${newTitle(title)} episode ${episodeNumber}`} />
         {episodeNumber ? (
