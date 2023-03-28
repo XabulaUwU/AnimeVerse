@@ -30,5 +30,9 @@ export function WatchView() {
     episodeData();
     // eslint-disable-next-line
   }, []);
-  return <ReactPlayer url={episodeInfo?.sources[0].url} controls />;
+  return (
+    <div>
+      <ReactPlayer url={episodeInfo?.sources[0].url} controls />
+    </div>
+  );
 }
