@@ -7,7 +7,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="watch" element={<Watch />} />
+      <Route path="watch/:id" element={<Watch />} />
       <Route path="anime/:id" element={<AnimeInfo />} />
     </Routes>
   );
