@@ -61,6 +61,7 @@ export function MainView() {
                 image={i.image}
                 episodeNumber={i.episodeNumber}
                 key={index}
+                id={i.id}
               />
             );
           }
@@ -76,6 +77,7 @@ export function MainView() {
                 image={i.image}
                 episodeNumber={i.episodeNumber}
                 key={index}
+                id={i.id}
               />
             );
           }
@@ -91,6 +93,7 @@ export function MainView() {
                 image={i.image}
                 episodeNumber={i.episodeNumber}
                 key={index}
+                id={i.id}
               />
             );
           }

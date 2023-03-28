@@ -3,14 +3,14 @@ import { data as episode } from "../../services/animeEpisode/episode";
 import ReactPlayer from "react-player";
 type episodeObj = {
   headers: {
-    Referer: string;
-    watchsb: string | null; // or null, since only provided with server being equal to streamsb.
-    "User-Agent": string | null; // or null
+    Referer: "string";
+    watchsb: "string"; // or null, since only provided with server being equal to "streamsb".
+    "User-Agent": "string"; // or null
   };
   sources: [
     {
-      url: string;
-      quality: string;
+      url: "string";
+      quality: "string";
       isM3U8: true;
     }
   ];
@@ -30,9 +30,5 @@ export function WatchView() {
     episodeData();
     // eslint-disable-next-line
   }, []);
-  return (
-    <div>
-      <ReactPlayer url={episodeInfo?.sources[0].url} controls />
-    </div>
-  );
+  return <ReactPlayer url={episodeInfo?.sources[0].url} controls />;
 }
