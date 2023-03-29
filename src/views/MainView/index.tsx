@@ -4,18 +4,16 @@ import { EpisodeView } from "../../components/AnimeComponent";
 import { data as top } from "../../services/topAiring/topAiring";
 import "./mainView.scss";
 type recentEpisodesList = {
-  currentPage: 0;
-  hasNextPage: true;
-  results: [
+  items: [
     {
-      id: string;
-      episodeId: string;
-      episodeNumber: 0;
       title: string;
       image: string;
       url: string;
     }
   ];
+  page: number;
+  hasNext: boolean;
+  total: -1;
 };
 type topAiringAnime = {
   currentPage: 0;
@@ -53,15 +51,14 @@ export function MainView() {
     <main>
       <h1>Recent Episodes</h1>
       <div className="recent" id="first">
-        {recentEpisodes?.results.map((i, index) => {
-          if (index < 5) {
+        {recentEpisodes?.items.map((i, index) => {
+          if (index < 4) {
             return (
               <EpisodeView
                 title={i.title}
                 image={i.image}
-                episodeNumber={i.episodeNumber}
                 key={index}
-                id={i.id}
+                id={i.url}
               />
             );
           }
@@ -69,15 +66,14 @@ export function MainView() {
         })}
       </div>
       <div className="recent" id="second">
-        {recentEpisodes?.results.map((i, index) => {
-          if (index > 4 && index < 10) {
+        {recentEpisodes?.items.map((i, index) => {
+          if (index > 3 && index < 8) {
             return (
               <EpisodeView
                 title={i.title}
                 image={i.image}
-                episodeNumber={i.episodeNumber}
                 key={index}
-                id={i.id}
+                id={i.url}
               />
             );
           }
@@ -85,15 +81,14 @@ export function MainView() {
         })}
       </div>
       <div className="recent" id="third">
-        {recentEpisodes?.results.map((i, index) => {
-          if (index > 9 && index < 15) {
+        {recentEpisodes?.items.map((i, index) => {
+          if (index > 7 && index < 13) {
             return (
               <EpisodeView
                 title={i.title}
                 image={i.image}
-                episodeNumber={i.episodeNumber}
                 key={index}
-                id={i.id}
+                id={i.url}
               />
             );
           }

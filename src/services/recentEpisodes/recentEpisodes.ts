@@ -1,9 +1,9 @@
 import { instance } from "../api/axios";
-const url = "/anime/gogoanime/recent-episodes";
+const url = "latest/episodes";
 export const data = async () => {
   try {
     const { data } = await instance.get(url, {
-      params: { page: 1, type: 1 },
+      params: { site: "animefire" },
     });
     return data;
   } catch (err) {
