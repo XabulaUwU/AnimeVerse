@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { data as recent } from "../../services/recentEpisodes/recentEpisodes";
 import { EpisodeView } from "../../components/AnimeComponent";
-import { data as top } from "../../services/topAiring/topAiring";
+import { data as top } from "../../services/popular/popular";
 import "./mainView.scss";
 type recentEpisodesList = {
   items: [
@@ -15,31 +15,30 @@ type recentEpisodesList = {
   hasNext: boolean;
   total: -1;
 };
-type topAiringAnime = {
-  currentPage: 0;
-  hasNextPage: true;
-  results: [
+type popular = {
+  items: [
     {
-      id: string;
-      title: string;
-      image: string;
-      url: string;
-      genres: [string];
+      title: string; //"Shingeki no Kyojin: The Final Season - Kanketsu-hen";
+      image: string; //"https://animefire.net/img/animes/shingeki-no-kyojin-the-final-season-kanketsu-hen.jpg?v=1";
+      url: string; //"/animes/shingeki-no-kyojin-the-final-season-kanketsu-hen-todos-os-episodios";
     }
   ];
+  page: 1;
+  hasNext: true;
+  total: -1;
 };
 
 export function MainView() {
   const [recentEpisodes, setRecentEpisodes] = useState<recentEpisodesList>();
-  const [topAiring, setTopAiring] = useState<topAiringAnime>();
+  const [popular, setPopular] = useState<popular>();
 
   const recentEpisodesData = async () => {
     const recentEpisodesList = await recent();
     setRecentEpisodes(recentEpisodesList);
   };
   const topAiringData = async () => {
-    const topAiringList = await top();
-    setTopAiring(topAiringList);
+    const popularList = await top();
+    setPopular(popularList);
   };
 
   useEffect(() => {
@@ -96,14 +95,14 @@ export function MainView() {
         })}
       </div>
       <h1>Popular Anime</h1>
-      <div className="popular">
-        {topAiring?.results.map((i, index) => {
+      <div className="popularContainer">
+        {popular?.items.map((i, index) => {
           if (index < 5) {
             return (
               <EpisodeView
                 title={i.title}
                 image={i.image}
-                id={i.id}
+                id={i.url}
                 key={index}
               />
             );
@@ -111,14 +110,14 @@ export function MainView() {
           return "";
         })}
       </div>
-      <div className="popular">
-        {topAiring?.results.map((i, index) => {
-          if (index > 4) {
+      <div className="popularContainer">
+        {popular?.items.map((i, index) => {
+          if (index > 4 && index < 10) {
             return (
               <EpisodeView
                 title={i.title}
                 image={i.image}
-                id={i.id}
+                id={i.url}
                 key={index}
               />
             );

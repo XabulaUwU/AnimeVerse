@@ -6,10 +6,10 @@ export function EpisodeView({ title, image, id = "" }) {
     return is;
   };
   return (
-    <Link to={isEpisode(title) ? `/watch${id}` : `/anime/${id}`}>
-      <div className="recentEpisode">
+    <Link to={isEpisode(title) ? `/watch${id}` : `${id}`}>
+      <div className={isEpisode(title) ? "recentEpisode" : "popular"}>
         <img src={image} alt={title} />
-        {title}
+        <p>{title}</p>
       </div>
     </Link>
   );

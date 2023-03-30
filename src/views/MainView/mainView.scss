@@ -4,10 +4,11 @@ main {
     height: 300px;
     justify-content: space-between;
   }
-  .popular {
+  .popularContainer {
     display: flex;
     height: 300px;
     justify-content: space-between;
+    margin-bottom: 50px;
   }
   a {
     text-decoration: none;
