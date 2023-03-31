@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { data as info } from "../../services/animeInfo/getAnimeInfo";
+import { instance } from "../../services/api/axios";
 import "./index.scss";
 type animeInfoObject = {
   title: string;
@@ -48,7 +49,9 @@ export function InfoView() {
           <h2>Sinopse: {episodesInfo?.description}</h2>
           <h2>
             Data de Lançamento:
-            {episodesInfo?.year ? ` ${episodesInfo?.year}` : " Não Informado"}
+            {episodesInfo?.year == null
+              ? " Não Informado"
+              : ` ${episodesInfo?.year}`}
           </h2>
           <h2>
             Número de episódios: {episodesInfo?.seasons[0].episodes.length}
