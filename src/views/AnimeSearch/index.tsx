@@ -19,28 +19,20 @@ export function AnimeSearch() {
   const [animeSearch, setAnimeSearch] = useState<animeSearchObj>();
   const getSearchId = () => {
     const urlEnd = window.location.href.indexOf("search/");
-    console.log(window.location.href.slice(urlEnd + 7));
     return window.location.href.slice(urlEnd + 7);
   };
   const getAnimeSearch = async () => {
     const searchList = await search(getSearchId());
     setAnimeSearch(searchList);
   };
-  const generateSearch = () => {
-    let i = 0;
-    const length = animeSearch?.items.length / 4;
-    console.log(animeSearch?.items.length);
-    console.log(length.toFixed(0));
-  };
   useEffect(() => {
     getAnimeSearch();
-    generateSearch();
   }, []);
   return (
     <>
       <div className="searchContainer">
         {animeSearch?.items.map((i, index) => {
-          if (index < 4)
+          if (index > 0 && index < 5)
             return (
               <EpisodeView
                 image={i.image}
