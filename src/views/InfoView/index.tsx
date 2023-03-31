@@ -64,7 +64,10 @@ export function InfoView() {
               <p>
                 {episodesInfo?.title}: Episode {i.title}
               </p>
-              <Link to={`/watch${i.url}`}>
+              <Link
+                to={`/watch${i.url}`}
+                state={{ episodes: episodesInfo?.seasons[0] }}
+              >
                 <p className="watch">Watch</p>
               </Link>
             </div>
