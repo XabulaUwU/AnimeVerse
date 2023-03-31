@@ -1,6 +1,6 @@
 import { instance } from "../api/axios";
 
-export const url = "watch/url";
+export const url = "watch/";
 export const data = async (id: string) => {
   try {
     const { data } = await instance.get(url, {

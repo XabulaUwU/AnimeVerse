@@ -9,7 +9,8 @@ type episodeObj = {
 export function WatchView() {
   const [episodeInfo, setEpisodeInfo] = useState<episodeObj>();
   const getEpisodeId = () => {
-    const urlEnd = window.location.href.indexOf("/animes/");
+    const urlEnd = window.location.href.indexOf("animes/");
+    console.log(window.location.href.slice(urlEnd));
     return window.location.href.slice(urlEnd);
   };
   const episodeData = async () => {
@@ -18,7 +19,7 @@ export function WatchView() {
     setEpisodeInfo(newEpisodeData);
   };
   useEffect(() => {
-    episodeData();
+    //episodeData();
     // eslint-disable-next-line
   }, []);
   return (

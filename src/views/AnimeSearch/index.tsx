@@ -32,7 +32,7 @@ export function AnimeSearch() {
     <>
       <div className="searchContainer">
         {animeSearch?.items.map((i, index) => {
-          if (index > 0 && index < 5)
+          if (index > -1 && index < 4)
             return (
               <EpisodeView
                 image={i.image}
