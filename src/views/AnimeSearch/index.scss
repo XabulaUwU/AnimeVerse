@@ -1,0 +1,13 @@
+.searchContainer {
+  display: flex;
+  justify-content: space-between;
+  a {
+    height: 350px;
+    width: 220px;
+    text-decoration: none;
+    color: white;
+  }
+  a:not(:last-child) {
+    margin-right: 20px;
+  }
+}

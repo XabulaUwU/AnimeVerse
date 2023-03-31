@@ -16,5 +16,15 @@ header {
     justify-content: center;
     border-radius: 10px;
     border: none;
+    input {
+      background-color: inherit;
+      color: white;
+      #hide {
+        display: none;
+      }
+    }
+    input:focus {
+      outline: none;
+    }
   }
 }

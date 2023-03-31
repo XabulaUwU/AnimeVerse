@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { data as info } from "../../services/animeInfo/getAnimeInfo";
-import { instance } from "../../services/api/axios";
 import "./index.scss";
 type animeInfoObject = {
   title: string;
@@ -33,7 +32,6 @@ export function InfoView() {
   };
   const animeInfo = async () => {
     const animeInfoList = await info(getAnimeId());
-    console.log(animeInfoList);
     setEpisodesInfo(animeInfoList);
   };
 
@@ -62,7 +60,7 @@ export function InfoView() {
       <div id="episodes">
         {episodesInfo?.seasons[0].episodes.map((i, index) => {
           return (
-            <div id="episode">
+            <div id="episode" key={index}>
               <p>
                 {episodesInfo?.title}: Episode {i.title}
               </p>

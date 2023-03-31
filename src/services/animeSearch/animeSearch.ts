@@ -1,11 +1,11 @@
 import { instance } from "../api/axios";
 
-const url = "anime";
+const url = "search";
 export const data = async (id: string) => {
   try {
     const { data } = await instance.get(url, {
       params: {
-        url: id,
+        search: id,
         site: "animefire",
       },
     });
