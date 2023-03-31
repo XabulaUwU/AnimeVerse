@@ -19,21 +19,14 @@ export function WatchView() {
   };
   useEffect(() => {
     episodeData();
-    console.log(
-      `${instance.defaults.baseURL}watch?url=${getEpisodeId()}&site=animefire`
-    );
     // eslint-disable-next-line
   }, []);
   return (
     <div>
       <ReactPlayer
-        url={
-          episodeInfo?.url
-            ? episodeInfo.url
-            : `${
-                instance.defaults.baseURL
-              }watch?url=${getEpisodeId()}&site=animefire`
-        }
+        url={`${
+          instance.defaults.baseURL
+        }watch?url=${getEpisodeId()}&site=animefire`}
         controls
       />
     </div>
