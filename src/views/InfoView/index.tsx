@@ -27,8 +27,8 @@ type animeInfoObject = {
 export function InfoView() {
   const [episodesInfo, setEpisodesInfo] = useState<animeInfoObject>();
   const getAnimeId = () => {
-    console.log(window.location.href.slice(34));
-    return window.location.href.slice(34);
+    const urlEnd = window.location.href.indexOf("/animes/");
+    return window.location.href.slice(urlEnd);
   };
   const animeInfo = async () => {
     const animeInfoList = await info(getAnimeId());

@@ -4,11 +4,11 @@ import { instance } from "../api/axios";
 Using the example episode ID of 'spy-x-family-episode-1',
 explicitly defining default server for demostrative purposes.
 */
-const url = "https://api.consumet.org/anime/gogoanime/watch/";
+const url = "watch/url";
 export const data = async (id: string) => {
   try {
-    const { data } = await instance.get(url + id, {
-      params: { server: "gogocdn" },
+    const { data } = await instance.get(url, {
+      params: { site: "animefire", url: id },
     });
     return data;
   } catch (err) {
