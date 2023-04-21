@@ -32,6 +32,10 @@ export function AnimeSearch() {
     <>
       <div className="searchContainer">
         {animeSearch?.items.map((i, index) => {
+          /*mano fazer um treco mais ou menos assim
+            pegar o tamanho da array de item, dividir por 5, pegar o valor
+            da divisão exata e fazer um for loop a cada interação um if daquele
+          */
           if (index > -1 && index < 4)
             return (
               <EpisodeView
