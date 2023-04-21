@@ -9,7 +9,7 @@ export function Header() {
   };
   return (
     <header>
-      <div id="name">Nome</div>
+      <div id="name">Anime Verse</div>
       <div id="search">
         <form onSubmit={handleSubmition} autoComplete="off">
           <input

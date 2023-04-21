@@ -9,11 +9,16 @@
   h2 {
     font-weight: 100;
     font-family: "Times New Roman", Times, serif;
+    display: inline-block;
   }
   margin-bottom: 5px;
   img {
     width: 220px;
     height: 280px;
+    margin-left: 10px;
+  }
+  #sin{
+    text-align: justify;
   }
 }
 #episodes {

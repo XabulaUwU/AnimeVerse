@@ -44,16 +44,16 @@ export function InfoView() {
       <div id="information">
         <div id="info">
           <h1>{episodesInfo?.title}</h1>
-          <h2>Sinopse: {episodesInfo?.description}</h2>
-          <h2>
-            Data de Lançamento:
+          <p id="sin"><h2>Sinopse:</h2> {episodesInfo?.description}</p>
+          <p>
+            <h2>Data de Lançamento:</h2>
             {episodesInfo?.year == null
               ? " Não Informado"
               : ` ${episodesInfo?.year}`}
-          </h2>
-          <h2>
-            Número de episódios: {episodesInfo?.seasons[0].episodes.length}
-          </h2>
+          </p>
+          <p>
+            <h2>Número de episódios:</h2> {episodesInfo?.seasons[0].episodes.length}
+          </p>
         </div>
         <img src={episodesInfo?.image} alt={episodesInfo?.title} />
       </div>
