@@ -33,7 +33,7 @@ export function WatchView() {
     otherButton.classList.toggle('active')
     event.currentTarget.classList.toggle('active')
     if(event.currentTarget.innerText === 'Player 2') {
-      player.innerHTML = `<div id="content"><h2>Para evitarmos problemas o player deve ser aberto em outra janela</h2> <h3><a target="_blank" href=${episodeInfo?.url}>Clique aqui</a></h3></div>`
+      player.innerHTML = `<div id="content"><h2>Para evitarmos problemas o player deve ser aberto em outra janela</h2> <h3><a target="_blank" rel="noopener noreferrer" href=${episodeInfo?.url}>Clique aqui</a></h3></div>`
     }
     else{
       episodePlayer.src = `${instance.defaults.baseURL}watch?url=${getEpisodeId()}&site=animefire`}
