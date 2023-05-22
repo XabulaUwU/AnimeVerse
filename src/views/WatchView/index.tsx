@@ -36,9 +36,9 @@ export function WatchView() {
       player.innerHTML = `<div id="content"><h2>Para evitarmos problemas o player deve ser aberto em outra janela</h2> <h3><a target="_blank" rel="noopener noreferrer" href=${episodeInfo?.url}>Clique aqui</a></h3></div>`
     }
     else{
-      episodePlayer.src = `${instance.defaults.baseURL}watch?url=${getEpisodeId()}&site=animefire`}
-  }
-
+      player.innerHTML = `<video src="${instance.defaults.baseURL}watch?url=${getEpisodeId()}&site=animefire" controls id="video"></video>`
+      }
+    }
   return (
     <>
       <div id="player">
