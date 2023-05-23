@@ -14,7 +14,11 @@ main {
     text-decoration: none;
     color: inherit;
   }
-
+  @media(prefers-reduced-motion){
+    .hidden{
+      transition: none;
+    }
+  }
   .hidden{
     opacity: 0;
     transform: translateX(-100%);
