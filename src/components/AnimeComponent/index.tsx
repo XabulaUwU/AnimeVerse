@@ -18,6 +18,7 @@ export function EpisodeView({ title, image, id = "" }) {
   })
   hiddenElements.forEach(el => {
     observer.observe(el)
+    console.log(el)
   })
   return (
     <Link to={isEpisode(title) ? `/watch${id}` : `${id}`} state={{episodes: id}}>
