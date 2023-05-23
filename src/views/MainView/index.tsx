@@ -31,7 +31,20 @@ type popular = {
 export function MainView() {
   const [recentEpisodes, setRecentEpisodes] = useState<recentEpisodesList>();
   const [popular, setPopular] = useState<popular>();
-
+  const hiddenElements = document.querySelectorAll('.hidden')
+  const observer = new IntersectionObserver((entries) =>{
+    entries.forEach((entry) => {
+      console.log(entry)
+      if (entry.isIntersecting){
+        entry.target.classList.add('show')
+      }else{
+        entry.target.classList.remove('show')
+      }
+    })
+  })
+  hiddenElements.forEach(el => {
+    observer.observe(el)
+  })
   const recentEpisodesData = async () => {
     const recentEpisodesList = await recent();
     setRecentEpisodes(recentEpisodesList);
