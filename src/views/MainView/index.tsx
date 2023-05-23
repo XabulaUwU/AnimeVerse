@@ -31,7 +31,20 @@ type popular = {
 export function MainView() {
   const [recentEpisodes, setRecentEpisodes] = useState<recentEpisodesList>();
   const [popular, setPopular] = useState<popular>();
-
+  const hiddenElements = document.querySelectorAll('.hidden')
+  const observer = new IntersectionObserver((entries) =>{
+    entries.forEach((entry) => {
+      if (entry.isIntersecting){
+        entry.target.classList.add('show')
+        console.log(entry)
+      }else{
+        entry.target.classList.remove('show')
+      }
+    })
+  })
+  hiddenElements.forEach(el => {
+    observer.observe(el)
+  })
   const recentEpisodesData = async () => {
     const recentEpisodesList = await recent();
     setRecentEpisodes(recentEpisodesList);
@@ -49,7 +62,7 @@ export function MainView() {
   return (
     <main>
       <h1>Recent Episodes</h1>
-      <div className="recent" id="first">
+      <div className="recent hidden" id="first">
         {recentEpisodes?.items.map((i, index) => {
           if (index < 4) {
             return (
@@ -64,7 +77,7 @@ export function MainView() {
           return "";
         })}
       </div>
-      <div className="recent" id="second">
+      <div className="recent hidden" id="second">
         {recentEpisodes?.items.map((i, index) => {
           if (index > 3 && index < 8) {
             return (
@@ -79,7 +92,7 @@ export function MainView() {
           return "";
         })}
       </div>
-      <div className="recent" id="third">
+      <div className="recent hidden" id="third">
         {recentEpisodes?.items.map((i, index) => {
           if (index > 7 && index < 13) {
             return (
@@ -95,7 +108,7 @@ export function MainView() {
         })}
       </div>
       <h1>Popular Anime</h1>
-      <div className="popularContainer">
+      <div className="popularContainer hidden">
         {popular?.items.map((i, index) => {
           if (index < 5) {
             return (
@@ -110,7 +123,7 @@ export function MainView() {
           return "";
         })}
       </div>
-      <div className="popularContainer">
+      <div className="popularContainer hidden">
         {popular?.items.map((i, index) => {
           if (index > 4 && index < 10) {
             return (
