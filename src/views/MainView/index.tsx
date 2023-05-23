@@ -36,9 +36,6 @@ export function MainView() {
     entries.forEach((entry) => {
       if (entry.isIntersecting){
         entry.target.classList.add('show')
-        console.log(entry)
-      }else{
-        entry.target.classList.remove('show')
       }
     })
   })
@@ -61,83 +58,43 @@ export function MainView() {
 
   return (
     <main>
-      <h1>Recent Episodes</h1>
-      <div className="recent hidden" id="first">
-        {recentEpisodes?.items.map((i, index) => {
-          if (index < 4) {
-            return (
-              <EpisodeView
-                title={i.title}
-                image={i.image}
-                key={index}
-                id={i.url}
-              />
-            );
-          }
-          return "";
-        })}
+  <h1>Recent Episodes</h1>
+  {recentEpisodes?.items.map((i, index) => {
+    const containerIndex = Math.floor(index / 4);
+    const shouldRender = index % 4 === 0;
+
+    return shouldRender ? (
+      <div className="recent hidden" id={`container-${containerIndex}`} key={containerIndex}>
+        {recentEpisodes.items.slice(index, index + 4).map((item, itemIndex) => (
+          <EpisodeView
+            title={item.title}
+            image={item.image}
+            id={item.url}
+            key={itemIndex}
+          />
+        ))}
       </div>
-      <div className="recent hidden" id="second">
-        {recentEpisodes?.items.map((i, index) => {
-          if (index > 3 && index < 8) {
-            return (
-              <EpisodeView
-                title={i.title}
-                image={i.image}
-                key={index}
-                id={i.url}
-              />
-            );
-          }
-          return "";
-        })}
+    ) : null;
+  })}
+
+  <h1>Popular Anime</h1>
+  {popular?.items.map((i, index) => {
+    const containerIndex = Math.floor(index / 4);
+    const shouldRender = index % 4 === 0;
+
+    return shouldRender ? (
+      <div className="popularContainer hidden" id={`container-${containerIndex}`} key={containerIndex}>
+        {popular.items.slice(index, index + 4).map((item, itemIndex) => (
+          <EpisodeView
+            title={item.title}
+            image={item.image}
+            id={item.url}
+            key={itemIndex}
+          />
+        ))}
       </div>
-      <div className="recent hidden" id="third">
-        {recentEpisodes?.items.map((i, index) => {
-          if (index > 7 && index < 13) {
-            return (
-              <EpisodeView
-                title={i.title}
-                image={i.image}
-                key={index}
-                id={i.url}
-              />
-            );
-          }
-          return "";
-        })}
-      </div>
-      <h1>Popular Anime</h1>
-      <div className="popularContainer hidden">
-        {popular?.items.map((i, index) => {
-          if (index < 5) {
-            return (
-              <EpisodeView
-                title={i.title}
-                image={i.image}
-                id={i.url}
-                key={index}
-              />
-            );
-          }
-          return "";
-        })}
-      </div>
-      <div className="popularContainer hidden">
-        {popular?.items.map((i, index) => {
-          if (index > 4 && index < 10) {
-            return (
-              <EpisodeView
-                title={i.title}
-                image={i.image}
-                id={i.url}
-                key={index}
-              />
-            );
-          }
-          return "";
-        })}
-      </div>
-    </main>
+    ) : null;
+  })}
+</main>
   );
 }

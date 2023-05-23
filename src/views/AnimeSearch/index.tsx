@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { EpisodeView } from "../../components/AnimeComponent";
 import { data as search } from "../../services/animeSearch/animeSearch";
 import "./index.scss";
+import React from "react";
 
 type animeSearchObj = {
   items: [
@@ -17,10 +18,12 @@ type animeSearchObj = {
 };
 export function AnimeSearch() {
   const [animeSearch, setAnimeSearch] = useState<animeSearchObj>();
+  const length = Math.floor(animeSearch?.items.length / 4) + 1
   const getSearchId = () => {
     const urlEnd = window.location.href.indexOf("search/");
     return window.location.href.slice(urlEnd + 7);
   };
+  
   const getAnimeSearch = async () => {
     const searchList = await search(getSearchId());
     setAnimeSearch(searchList);
@@ -29,102 +32,23 @@ export function AnimeSearch() {
     getAnimeSearch();
   }, []);
   return (
-    <>
-      <div className="searchContainer">
-        {animeSearch?.items.map((i, index) => {
-          /*mano fazer um treco mais ou menos assim
-            pegar o tamanho da array de item, dividir por 5, pegar o valor
-            da divisão exata e fazer um for loop a cada interação um if daquele
-          */
-          if (index > -1 && index < 4)
-            return (
-              <EpisodeView
-                image={i.image}
-                title={i.title}
-                id={i.url}
-                key={index}
-              />
-            );
-        })}
-      </div>
-      <div className="searchContainer">
-        {animeSearch?.items.map((i, index) => {
-          if (index > 3 && index < 8)
-            return (
-              <EpisodeView
-                image={i.image}
-                title={i.title}
-                id={i.url}
-                key={index}
-              />
-            );
-        })}
-      </div>
-      <div className="searchContainer">
-        {animeSearch?.items.map((i, index) => {
-          if (index > 7 && index < 12)
-            return (
-              <EpisodeView
-                image={i.image}
-                title={i.title}
-                id={i.url}
-                key={index}
-              />
-            );
-        })}
-      </div>
-      <div className="searchContainer">
-        {animeSearch?.items.map((i, index) => {
-          if (index > 11 && index < 16)
-            return (
-              <EpisodeView
-                image={i.image}
-                title={i.title}
-                id={i.url}
-                key={index}
-              />
-            );
-        })}
-      </div>
-      <div className="searchContainer">
-        {animeSearch?.items.map((i, index) => {
-          if (index > 15 && index < 20)
-            return (
-              <EpisodeView
-                image={i.image}
-                title={i.title}
-                id={i.url}
-                key={index}
-              />
-            );
-        })}
-      </div>
-      <div className="searchContainer">
-        {animeSearch?.items.map((i, index) => {
-          if (index > 19 && index < 24)
-            return (
-              <EpisodeView
-                image={i.image}
-                title={i.title}
-                id={i.url}
-                key={index}
-              />
-            );
-        })}
-      </div>
-      <div className="searchContainer">
-        {animeSearch?.items.map((i, index) => {
-          if (index > 23 && index < 28)
-            return (
-              <EpisodeView
-                image={i.image}
-                title={i.title}
-                id={i.url}
-                key={index}
-              />
-            );
-        })}
-      </div>
-    </>
-  );
+  <>
+  {animeSearch?.items.map((i, index) => {
+  const containerIndex = Math.floor(index / 4);
+  const shouldRender = index % 4 === 0;
+
+  return shouldRender ? (
+    <div className="searchContainer" key={containerIndex}>
+      {animeSearch.items.slice(index, index + 4).map((item, itemIndex) => (
+        <EpisodeView
+          image={item.image}
+          title={item.title}
+          id={item.url}
+          key={itemIndex}
+        />
+      ))}
+    </div>
+  ) : null;
+})}
+  </>);
 }
