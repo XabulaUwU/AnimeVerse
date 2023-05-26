@@ -60,47 +60,46 @@ export function MainView() {
 
   return (
     <main>
-    <div className="recent hidden">
       <h1>Recent Episodes</h1>
+      <div className="recent hidden">
       {recentEpisodes?.items.map((item, index) => {
-        const rowNumber = Math.floor(index / 4);
-        const shouldRender = index % 4 === 0;
+          const rowNumber = Math.floor(index / 4);
+          const shouldRender = index % 4 === 0;
 
-        return shouldRender ? (
-          <div className="episodeRow" key={rowNumber}>
-            {recentEpisodes.items.slice(index, index + 4).map((item, itemIndex) => (
-              <EpisodeView
-                title={item.title}
-                image={item.image}
-                id={item.url}
-                key={itemIndex}
-              />
-            ))}
-          </div>
-        ) : null;
-      })}
-    </div>
-
-    <div className="popularContainer hidden">
+          return shouldRender ? (
+            <div className="episodeRow" key={rowNumber}>
+              {recentEpisodes.items.slice(index, index + 4).map((item, itemIndex) => (
+                <EpisodeView
+                  title={item.title}
+                  image={item.image}
+                  id={item.url}
+                  key={itemIndex}
+                />
+              ))}
+            </div>
+          ) : null;
+        })}
+      </div>
       <h1>Popular Anime</h1>
-      {popular?.items.map((item, index) => {
-        const rowNumber = Math.floor(index / 4);
-        const shouldRender = index % 4 === 0;
+      <div className="popularContainer hidden">
+        {popular?.items.map((item, index) => {
+            const rowNumber = Math.floor(index / 4);
+            const shouldRender = index % 4 === 0;
 
-        return shouldRender ? (
-          <div className="episodeRow" key={rowNumber}>
-            {popular.items.slice(index, index + 4).map((item, itemIndex) => (
-              <EpisodeView
-                title={item.title}
-                image={item.image}
-                id={item.url}
-                key={itemIndex}
-              />
-            ))}
-          </div>
-        ) : null;
-      })}
-    </div>
+            return shouldRender ? (
+              <div className="episodeRow" key={rowNumber}>
+                {popular.items.slice(index, index + 4).map((item, itemIndex) => (
+                  <EpisodeView
+                    title={item.title}
+                    image={item.image}
+                    id={item.url}
+                    key={itemIndex}
+                  />
+                ))}
+              </div>
+            ) : null;
+          })}
+      </div>
   </main>
 
   );
