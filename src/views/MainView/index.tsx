@@ -31,17 +31,18 @@ type popular = {
 export function MainView() {
   const [recentEpisodes, setRecentEpisodes] = useState<recentEpisodesList>();
   const [popular, setPopular] = useState<popular>();
-  const hiddenElements = document.querySelectorAll('.hidden')
-  const observer = new IntersectionObserver((entries) =>{
+  const hiddenElements = document.querySelectorAll('.hidden');
+  const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
-      if (entry.isIntersecting){
-        entry.target.classList.add('show')
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
       }
-    })
-  })
-  hiddenElements.forEach(el => {
-    observer.observe(el)
-  })
+    });
+  });
+  
+  hiddenElements.forEach((el) => {
+    observer.observe(el);
+  });
   const recentEpisodesData = async () => {
     const recentEpisodesList = await recent();
     setRecentEpisodes(recentEpisodesList);
@@ -56,45 +57,52 @@ export function MainView() {
     topAiringData();
   }, []);
 
+
   return (
     <main>
-  <h1>Recent Episodes</h1>
-  {recentEpisodes?.items.map((i, index) => {
-    const containerIndex = Math.floor(index / 4);
-    const shouldRender = index % 4 === 0;
+    <div className="recent hidden">
+      <h1>Recent Episodes</h1>
+      {recentEpisodes?.items.map((item, index) => {
+        const rowNumber = Math.floor(index / 4);
+        const shouldRender = index % 4 === 0;
 
-    return shouldRender ? (
-      <div className="recent hidden" id={`container-${containerIndex}`} key={containerIndex}>
-        {recentEpisodes.items.slice(index, index + 4).map((item, itemIndex) => (
-          <EpisodeView
-            title={item.title}
-            image={item.image}
-            id={item.url}
-            key={itemIndex}
-          />
-        ))}
-      </div>
-    ) : null;
-  })}
+        return shouldRender ? (
+          <div className="episodeRow" key={rowNumber}>
+            {recentEpisodes.items.slice(index, index + 4).map((item, itemIndex) => (
+              <EpisodeView
+                title={item.title}
+                image={item.image}
+                id={item.url}
+                key={itemIndex}
+              />
+            ))}
+          </div>
+        ) : null;
+      })}
+    </div>
 
-  <h1>Popular Anime</h1>
-  {popular?.items.map((i, index) => {
-    const containerIndex = Math.floor(index / 4);
-    const shouldRender = index % 4 === 0;
+    <div className="popularContainer hidden">
+      <h1>Popular Anime</h1>
+      {popular?.items.map((item, index) => {
+        const rowNumber = Math.floor(index / 4);
+        const shouldRender = index % 4 === 0;
 
-    return shouldRender ? (
-      <div className="popularContainer hidden" id={`container-${containerIndex}`} key={containerIndex}>
-        {popular.items.slice(index, index + 4).map((item, itemIndex) => (
-          <EpisodeView
-            title={item.title}
-            image={item.image}
-            id={item.url}
-            key={itemIndex}
-          />
-        ))}
-      </div>
-    ) : null;
-  })}
-</main>
+        return shouldRender ? (
+          <div className="episodeRow" key={rowNumber}>
+            {popular.items.slice(index, index + 4).map((item, itemIndex) => (
+              <EpisodeView
+                title={item.title}
+                image={item.image}
+                id={item.url}
+                key={itemIndex}
+              />
+            ))}
+          </div>
+        ) : null;
+      })}
+    </div>
+  </main>
+
   );
+  
 }
