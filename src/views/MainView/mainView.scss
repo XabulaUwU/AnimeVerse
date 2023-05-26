@@ -1,12 +1,10 @@
 main {
   .recent {
     display: flex;
-    height: 300px;
     justify-content: space-between;
   }
-  .popularContainer {
+  .popularMain {
     display: flex;
-    height: 300px;
     justify-content: space-between;
     margin-bottom: 50px;
   }
